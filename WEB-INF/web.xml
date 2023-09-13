@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	version="4.0">
+	<display-name>DataMining's Blog</display-name>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/exceptionNoPage.jsp</location>
+	</error-page>
+	<security-role>
+		<role-name>jodory</role-name>
+	</security-role>
+	<security-constraint>
+		<display-name>DataMining's Blog Security</display-name>
+		<web-resource-collection>
+			<web-resource-name>DataMining's Blog</web-resource-name>
+			<url-pattern>/programs/addProgram.jsp</url-pattern>
+			<url-pattern>/programs/editProgram.jsp</url-pattern>
+			<url-pattern>/posts/addPost.jsp</url-pattern>
+			<url-pattern>/posts/editPost.jsp</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>권한 관리자명</description>
+			<role-name>jodory</role-name>
+			<role-name>admin</role-name>
+			<role-name>dm_admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<login-config>
+		<!-- <auth-method>BASIC</auth-method> -->
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/programs/login.jsp</form-login-page>
+			<form-error-page>/programs/login_failed.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+</web-app>
